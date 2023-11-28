@@ -1,0 +1,31 @@
+.desktop-header {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+
+    .content {
+       width: 100%; 
+       padding: 1.5rem 2rem;
+       display: flex;
+       justify-content: space-between;
+       .left-col {
+
+       }
+       .right-col {
+         display: flex;
+         
+         .item {
+          overflow: hidden;
+          white-space: nowrap;
+         p{
+           font-weight: 600; 
+           margin: 0 1rem; 
+        //    transform: translateY(115px);
+         }
+         .char {
+            transform: translateY(80px);
+         }
+       } 
+     }
+    }
+}

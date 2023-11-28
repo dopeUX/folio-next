@@ -1,0 +1,26 @@
+.desktop-header {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+}
+.desktop-header .content {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.desktop-header .content .right-col {
+  display: flex;
+}
+.desktop-header .content .right-col .item {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.desktop-header .content .right-col .item p {
+  font-weight: 600;
+  margin: 0 1rem;
+}
+.desktop-header .content .right-col .item .char {
+  transform: translateY(80px);
+}/*# sourceMappingURL=DesktopHeader.component.css.map */

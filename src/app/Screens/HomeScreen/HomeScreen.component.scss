@@ -1,0 +1,58 @@
+.home-screen {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    margin:0 auto;
+
+    .hero-img {
+       width: 100%;
+       height: 100vh; 
+       position: absolute;
+       z-index:-1; 
+       margin: auto;
+       top: 0;
+       bottom: 0;
+       right: 0;
+       left: 0;
+       object-fit: cover;
+    }
+
+    .hero-img-anim {
+       width: 47%;
+       height: 70vh;  
+    }
+   .content {
+    //  background-image: url('../../../../public//assets/hero-bg.jpg');
+
+    //  background-repeat: no-repeat;
+    //  background-position: center; 
+    //  position: relative;
+     .home-hero {
+        .left-col {
+          
+        //   .hero-head-wrapper {
+        //     width: fit-content;
+            // overflow: hidden;
+            // white-space: nowrap;  
+          .hero-head {
+            width: fit-content;
+            margin: 0;
+            display: flex;
+            font-size: 8rem;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        //    } 
+          .char {
+            // transform: translateY(300px);
+          }
+          span {
+            transform: translateY(300px);
+          }
+          .span2 {
+            transform: translateY(300px);
+          }
+         }
+        }
+     }
+   } 
+}
