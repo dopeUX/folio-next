@@ -22,6 +22,9 @@
   width: 47%;
   height: 70vh;
 }
+.home-screen .content .home-hero {
+  position: relative;
+}
 .home-screen .content .home-hero .left-col .hero-head {
   width: -moz-fit-content;
   width: fit-content;
@@ -36,4 +39,40 @@
 }
 .home-screen .content .home-hero .left-col .hero-head .span2 {
   transform: translateY(300px);
+}
+.home-screen .content .home-hero .left-col .desc-section .desc {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0;
+  margin-left: 0.3rem;
+  display: flex;
+  font-size: 3rem;
+  font-weight: 600;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+.home-screen .content .home-hero .left-col .desc-section .desc .span3, .home-screen .content .home-hero .left-col .desc-section .desc .span4, .home-screen .content .home-hero .left-col .desc-section .desc .span5 {
+  transform: translateY(300px);
+}
+.home-screen .content .home-hero .about-tagline-section {
+  width: -moz-fit-content;
+  width: fit-content;
+  position: absolute;
+  bottom: 0;
+  right: 3rem;
+  display: block;
+}
+.home-screen .content .home-hero .about-tagline-section p {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0;
+  margin-left: 0.3rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 600;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+.home-screen .content .home-hero .about-tagline-section p .span6, .home-screen .content .home-hero .about-tagline-section p .char {
+  transform: translateY(500px);
 }/*# sourceMappingURL=HomeScreen.component.css.map */

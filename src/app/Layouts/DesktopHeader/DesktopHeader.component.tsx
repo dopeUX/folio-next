@@ -10,12 +10,12 @@ export interface DesktopHeaderProps {
 
 const DesktopHeader: React.FC<DesktopHeaderProps> = () => {
   useLayoutEffect(() => {
-    const name = new SplitType(".name");
-    gsap.to(".char", {
+    // const name = new SplitType(".name");
+    gsap.to(".name", {
       y: 0,
-      //   duration: 0.5,
+      duration: 1,
       stagger: 0.05,
-      delay: 0.2,
+      delay: 2.8,
     });
   }, []);
   return (

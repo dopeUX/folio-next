@@ -20,6 +20,7 @@
 .desktop-header .content .right-col .item p {
   font-weight: 600;
   margin: 0 1rem;
+  transform: translateY(-115px);
 }
 .desktop-header .content .right-col .item .char {
   transform: translateY(80px);

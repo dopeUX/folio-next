@@ -29,6 +29,7 @@
     //  background-position: center; 
     //  position: relative;
      .home-hero {
+        position: relative;
         .left-col {
           
         //   .hero-head-wrapper {
@@ -52,7 +53,49 @@
             transform: translateY(300px);
           }
          }
+         .desc-section {
+          .desc {
+            width: fit-content;
+            margin: 0;
+            margin-left: .3rem;
+            display: flex;
+            font-size: 3rem;
+            font-weight: 600;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        //    } 
+          .char {
+            // transform: translateY(300px);
+          }
+          .span3, .span4, .span5 {
+            transform: translateY(300px);
+          }
+          }
+         }
+
+       
         }
+
+        .about-tagline-section {
+            width: fit-content;
+            position: absolute;
+            bottom: 0;
+            right: 3rem;
+            display: block;
+
+            p{
+                width: fit-content;
+                margin: 0;
+                margin-left: .3rem;
+                 display: flex;
+                font-size: 2rem;
+                font-weight: 600;
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+              
+               .span6, .char {
+                transform: translateY(500px);
+              }
+            }
+         }
      }
    } 
 }
