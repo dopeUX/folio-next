@@ -3,9 +3,14 @@
   height: -moz-fit-content;
   height: fit-content;
   display: flex;
+  position: fixed;
+  left: 50%;
+  margin-top: 0;
+  transform: translateX(-50%);
 }
 .desktop-header .content {
   width: 100%;
+  margin-top: 0;
   padding: 1.5rem 2rem;
   display: flex;
   justify-content: space-between;

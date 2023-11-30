@@ -3,66 +3,88 @@ import React, { useLayoutEffect } from "react";
 import "./HomeScreen.component.css";
 import DesktopHeader from "@/app/Layouts/DesktopHeader/DesktopHeader.component";
 import gsap from "gsap";
-import SplitType from "split-type";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import heroImg from "../../../../public/assets/hero-bg.jpg";
-
+// import _ScrollTrigger from "gsap/ScrollTrigger";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import _ScrollSmoother from "gsap/ScrollSmoother";
 export interface HomeScreenProps {
   children?: React.ReactNode;
 }
 
 const HomeScreen: React.FC<HomeScreenProps> = () => {
-  const router = useRouter();
   const text1 = "EMBARK-ON-A";
   const text2 = "DIGITAL-ODYSSEY";
   const desc1 = "BBBoutique  Experiences  That  Are";
   const desc2 = "Holistic  Intentional  And  Express";
   const desc3 = "The  Heart  Of  Your  Brand.";
-  const name = "Shreyash";
+  const tagline = "Design,  Code,  AI";
+  const name = "Shreyash.";
+
   useLayoutEffect(() => {
-    // const hero = new SplitType(".span");
-    gsap.to(".span", {
+    gsapAction();
+  }, []);
+
+  const gsapAction = () => {
+    const txt = gsap.timeline();
+    gsap.registerPlugin(ScrollTrigger, _ScrollSmoother);
+    gsap.set(".hero-head-span1", { skewY: 40, skewX: -20 });
+    gsap.set(".hero-head-span2", { skewY: 40, skewX: -20 });
+    gsap.to(".hero-head-span1", {
+      y: 0,
+      stagger: 0.05,
+      duration: 1,
+      skewY: 0,
+      skewX: 0,
+      // rotate: 0,
+      ease: "power4.out",
+    });
+    gsap.to(".hero-head-span2", {
+      y: 0,
+      stagger: 0.05,
+      duration: 1,
+      rotate: 0,
+      skewX: 0,
+      skewY: 0,
+      ease: "power4.out",
+    });
+    gsap.to(".desc-section-span1", {
       y: 0,
       stagger: 0.05,
       duration: 1,
       ease: "power1",
     });
-    gsap.to(".span2", {
+    gsap.to(".desc-section-span2", {
       y: 0,
       stagger: 0.05,
       duration: 1,
       ease: "power1",
     });
-    gsap.to(".span3", {
+    gsap.to(".desc-section-span3", {
       y: 0,
       stagger: 0.05,
       duration: 1,
       ease: "power1",
     });
-    gsap.to(".span4", {
+    gsap.to(".tagline-span1", {
       y: 0,
       stagger: 0.05,
       duration: 1,
       ease: "power1",
     });
-    gsap.to(".span5", {
+    gsap.to(".tagline-span2", {
       y: 0,
       stagger: 0.05,
       duration: 1,
-      ease: "power1",
-    });
-    gsap.to(".span6", {
-      y: 0,
-      stagger: 0.05,
-      duration: 1,
+      delay: 2.8,
       ease: "power1",
     });
     gsap.to(".hero-img", {
-      width: "47%",
+      width: "40%",
       height: "70vh",
       duration: 1,
-      ease: "power2",
+      top: "1rem",
+      ease: "power4.out",
       //   scale: 1.5,
       delay: 2,
       stagger: {
@@ -72,14 +94,14 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
       },
       //   scale: 2.0,
     });
-  }, []);
+  };
   return (
-    <div className="home-screen">
+    <div className="home-screen" data-speed="0.5">
       <Image className="hero-img" src={heroImg} alt="" />
+      <div className="header">
+        <DesktopHeader />
+      </div>
       <div className="content">
-        <div className="header">
-          <DesktopHeader />
-        </div>
         <section className="home-hero global-container">
           <section className="left-col">
             {/* <div className="hero-head-wrapper"> */}
@@ -87,13 +109,13 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
               {text1.split("").map((item, index) => {
                 if (item === "-") {
                   return (
-                    <span className="span" key={index}>
+                    <span className="hero-head-span1" key={index}>
                       &nbsp;
                     </span>
                   );
                 }
                 return (
-                  <span className="span" key={index}>
+                  <span className="hero-head-span1" key={index}>
                     {item}
                   </span>
                 );
@@ -103,13 +125,13 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
               {text2.split("").map((item, index) => {
                 if (item === "-") {
                   return (
-                    <span className="span2" key={index}>
+                    <span className="hero-head-span2" key={index}>
                       &nbsp;
                     </span>
                   );
                 }
                 return (
-                  <span className="span2" key={index}>
+                  <span className="hero-head-span2" key={index}>
                     {item}
                   </span>
                 );
@@ -123,13 +145,13 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
                 {desc1.split(" ").map((item, index) => {
                   if (!item) {
                     return (
-                      <span className="span3" key={index}>
+                      <span className="desc-section-span1" key={index}>
                         &nbsp;
                       </span>
                     );
                   }
                   return (
-                    <span className="span3" key={index}>
+                    <span className="desc-section-span1" key={index}>
                       {item}
                     </span>
                   );
@@ -139,13 +161,13 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
                 {desc2.split(" ").map((item, index) => {
                   if (!item) {
                     return (
-                      <span className="span4" key={index}>
+                      <span className="desc-section-span2" key={index}>
                         &nbsp;
                       </span>
                     );
                   }
                   return (
-                    <span className="span4" key={index}>
+                    <span className="desc-section-span2" key={index}>
                       {item}
                     </span>
                   );
@@ -155,13 +177,13 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
                 {desc3.split(" ").map((item, index) => {
                   if (!item) {
                     return (
-                      <span className="span5" key={index}>
+                      <span className="desc-section-span3" key={index}>
                         &nbsp;
                       </span>
                     );
                   }
                   return (
-                    <span className="span5" key={index}>
+                    <span className="desc-section-span3" key={index}>
                       {item}
                     </span>
                   );
@@ -176,13 +198,33 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
             <p className="shr">
               {name.split("").map((item, index) => {
                 return (
-                  <span className="span6" key={index}>
+                  <span className="tagline-span1" key={index}>
+                    {item}
+                  </span>
+                );
+              })}
+            </p>
+            <p className="shr">
+              {tagline.split(" ").map((item, index) => {
+                if (!item) {
+                  return (
+                    <span className="tagline-span2" key={index}>
+                      &nbsp;
+                    </span>
+                  );
+                }
+                return (
+                  <span className="tagline-span2" key={index}>
                     {item}
                   </span>
                 );
               })}
             </p>
           </div>
+        </section>
+
+        <section className="bon-container global-container">
+          {/* <h1>BONSOIR!</h1> */}
         </section>
       </div>
     </div>
