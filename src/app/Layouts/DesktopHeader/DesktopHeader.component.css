@@ -25,9 +25,9 @@
   white-space: nowrap;
 }
 .desktop-header .content .right-col .item p {
-  font-weight: 600;
+  font-weight: 700;
   margin: 0 1rem;
-  color: rgba(0, 0, 0, 0.647);
+  color: rgb(0, 0, 0);
   transform: translateY(-115px);
 }
 .desktop-header .content .right-col .item .char {

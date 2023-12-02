@@ -29,6 +29,15 @@ const Neue = localFont({
   ],
   variable: "--font-neue",
 });
+const Kaftan = localFont({
+  src: [
+    {
+      path: "../../public/fonts/kaftan-trial.otf",
+      weight: "500",
+    },
+  ],
+  variable: "--font-kaftan",
+});
 
 export default function RootLayout({
   children,
@@ -37,7 +46,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${Neue.variable} font-sans`}>{children}</body>
+      <body className={`${Neue.variable} ${Kaftan.variable} font-sans`}>
+        {children}
+      </body>
     </html>
   );
 }

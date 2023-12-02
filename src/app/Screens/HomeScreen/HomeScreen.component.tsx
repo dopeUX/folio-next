@@ -18,9 +18,17 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   const desc3 = "The  Heart  Of  Your  Brand.";
   const tagline = "Design,  Code,  AI";
   const name = "Shreyash.";
+  const allTech = "AAAAAll  About  Tech.";
+  const cook = "LLLLLet  Me  Cook!";
   const bonsoir = "Bonsoir!";
   const scrollRef: any = useRef();
   const bgRef: any = useRef();
+  const bonDesc: string =
+    "Lorem  Ipsum  is  simply  dummy  text  of  the  printing  and   ";
+  const bonDesc2: string =
+    "typesetting  industry.  Lorem  Ipsum  has  been  the  industry's  standard  dummy  text  ever  since  the  1500s,  ";
+  const bonDesc3 =
+    "when  an  unknown  printer  took  a  galley   of  type  and  scrambled  it  to  make  a  type  specimen  book.";
   const containerRef = useRef(null);
 
   useLayoutEffect(() => {
@@ -33,18 +41,88 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: document.documentElement,
-        start: "300px",
-        end: "+=2000px",
+        start: "200px",
+        end: "+=600px",
         // scrub: true,
         markers: true,
       },
     });
+    const timeline2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: "300px",
+        end: "+=300px",
+        // scrub: true,
+        markers: true,
+      },
+    });
+    const timeline3 = gsap.timeline({
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: "600px",
+        end: "+=600px",
+        scrub: true,
+        markers: true,
+      },
+    });
     timeline.set(".bon-span1", { skewY: 40, skewX: -20 });
-    timeline.to(".bon-span1", {
+    timeline.to(".bon-span1", 1, {
       y: 0,
       skewY: 0,
       skewX: 0,
+      ease: "expo.out",
+      // fontSize: "15rem",
       stagger: 0.05,
+    });
+    timeline2.to(".bon-span2", {
+      y: 0,
+      skewY: 0,
+      skewX: 0,
+      // delay: 1,
+      ease: "expo.out",
+      stagger: 0.05,
+    });
+
+    timeline2
+      .add("start")
+      .to(
+        ".bon-span3",
+        0.5,
+        {
+          y: 0,
+          stagger: 0,
+          delay: 0.3,
+          ease: "expo.out",
+        },
+        "start",
+      )
+      .to(
+        ".bon-span4",
+        0.7,
+        {
+          y: 0,
+          stagger: 0,
+          delay: 0.3,
+          ease: "expo.out",
+        },
+        "start",
+      )
+      .to(
+        ".bon-span5",
+        0.9,
+        {
+          y: 0,
+          stagger: 0,
+          delay: 0.3,
+          ease: "expo.out",
+        },
+        "start",
+      );
+
+    timeline3.to(".bon-span6", {
+      y: 0,
+      ease: "expo.out",
+      fontSize: "10rem",
     });
 
     // gsap.to(".bon-span1", {
@@ -56,6 +134,13 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
     // });
 
     // gsap.registerPlugin(ScrollTrigger, _ScrollSmoother);
+    // gsap.to(".marquee-sec", {
+    //   // xPercent: 100,
+    //   // repeat: -1,
+    //   // duration: 5,
+    //   ease: "linear",
+    // });
+    // .totalProgress(0.5);
     gsap.set(".hero-head-span1", { skewY: 40, skewX: -20 });
     gsap.set(".hero-head-span2", { skewY: 40, skewX: -20 });
     gsap.to(".hero-head-span1", {
@@ -271,9 +356,96 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
           </h1>
 
           <div className="tech-section">
-            <h3>All About Tech.</h3>
+            <h3>
+              {allTech.split(" ").map((item, index) => {
+                if (!item) {
+                  return (
+                    <span className="bon-span2" key={index}>
+                      &nbsp;
+                    </span>
+                  );
+                }
+                return (
+                  <span className="bon-span2" key={index}>
+                    {item}
+                  </span>
+                );
+              })}
+            </h3>
+
+            <p className="desc">
+              {/* <div className="dot"></div> */}
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              {bonDesc.split(" ").map((item, index) => {
+                if (!item) {
+                  return (
+                    <span className="bon-span3" key={index}>
+                      &nbsp;
+                    </span>
+                  );
+                }
+                return (
+                  <span className="bon-span3" key={index}>
+                    {item}
+                  </span>
+                );
+              })}
+              {bonDesc2.split(" ").map((item, index) => {
+                if (!item) {
+                  return (
+                    <span className="bon-span4" key={index}>
+                      &nbsp;
+                    </span>
+                  );
+                }
+                return (
+                  <span className="bon-span4" key={index}>
+                    {item}
+                  </span>
+                );
+              })}
+              {bonDesc3.split(" ").map((item, index) => {
+                if (!item) {
+                  return (
+                    <span className="bon-span5" key={index}>
+                      &nbsp;
+                    </span>
+                  );
+                }
+                return (
+                  <span className="bon-span5" key={index}>
+                    {item}
+                  </span>
+                );
+              })}
+            </p>
+
+            <div className="cook">
+              <h3 className="cook-head">
+                {cook.split(" ").map((item, index) => {
+                  return (
+                    <span key={index} className="bon-span6">
+                      {item}
+                    </span>
+                  );
+                })}
+              </h3>
+            </div>
           </div>
         </section>
+
+        <div className="marquee-sec">
+          <h2>JavaScript.</h2>
+          <h2>JavaScript.</h2>
+          <h2>JavaScript.</h2>
+          <h2>JavaScript.</h2>
+          <h2>JavaScript.</h2>
+          <h2>JavaScript.</h2>
+          <h2>JavaScript.</h2>
+          <h2>JavaScript.</h2>
+          <h2>JavaScript.</h2>
+          <h2>JavaScript.</h2>
+        </div>
       </div>
     </div>
   );
