@@ -6,6 +6,8 @@
   position: fixed;
   left: 50%;
   margin-top: 0;
+  top: 0;
+  z-index: 20;
   transform: translateX(-50%);
 }
 .desktop-header .content {
@@ -25,6 +27,7 @@
 .desktop-header .content .right-col .item p {
   font-weight: 600;
   margin: 0 1rem;
+  color: rgba(0, 0, 0, 0.647);
   transform: translateY(-115px);
 }
 .desktop-header .content .right-col .item .char {

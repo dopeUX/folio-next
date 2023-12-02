@@ -1,13 +1,11 @@
 "use client";
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import "./HomeScreen.component.css";
 import DesktopHeader from "@/app/Layouts/DesktopHeader/DesktopHeader.component";
 import gsap from "gsap";
 import Image from "next/image";
 import heroImg from "../../../../public/assets/hero-bg.jpg";
-// import _ScrollTrigger from "gsap/ScrollTrigger";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import _ScrollSmoother from "gsap/ScrollSmoother";
 export interface HomeScreenProps {
   children?: React.ReactNode;
 }
@@ -20,14 +18,44 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   const desc3 = "The  Heart  Of  Your  Brand.";
   const tagline = "Design,  Code,  AI";
   const name = "Shreyash.";
+  const bonsoir = "Bonsoir!";
+  const scrollRef: any = useRef();
+  const bgRef: any = useRef();
+  const containerRef = useRef(null);
 
   useLayoutEffect(() => {
     gsapAction();
   }, []);
 
   const gsapAction = () => {
-    const txt = gsap.timeline();
-    gsap.registerPlugin(ScrollTrigger, _ScrollSmoother);
+    gsap.registerPlugin(ScrollTrigger);
+
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: "300px",
+        end: "+=2000px",
+        // scrub: true,
+        markers: true,
+      },
+    });
+    timeline.set(".bon-span1", { skewY: 40, skewX: -20 });
+    timeline.to(".bon-span1", {
+      y: 0,
+      skewY: 0,
+      skewX: 0,
+      stagger: 0.05,
+    });
+
+    // gsap.to(".bon-span1", {
+    //   y: 0,
+    //   stagger: 0.05,
+    //   duration: 1,
+    //   delay: 2.8,
+    //   ease: "power1",
+    // });
+
+    // gsap.registerPlugin(ScrollTrigger, _ScrollSmoother);
     gsap.set(".hero-head-span1", { skewY: 40, skewX: -20 });
     gsap.set(".hero-head-span2", { skewY: 40, skewX: -20 });
     gsap.to(".hero-head-span1", {
@@ -79,6 +107,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
       delay: 2.8,
       ease: "power1",
     });
+
     gsap.to(".hero-img", {
       width: "40%",
       height: "70vh",
@@ -96,8 +125,15 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
     });
   };
   return (
-    <div className="home-screen" data-speed="0.5">
-      <Image className="hero-img" src={heroImg} alt="" />
+    <div className="home-screen" ref={scrollRef}>
+      <Image
+        className="hero-img"
+        data-scroll
+        data-scroll-speed="0.3"
+        src={heroImg}
+        ref={bgRef}
+        alt=""
+      />
       <div className="header">
         <DesktopHeader />
       </div>
@@ -224,7 +260,19 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
         </section>
 
         <section className="bon-container global-container">
-          {/* <h1>BONSOIR!</h1> */}
+          <h1 className="bonsoir">
+            {bonsoir.split("").map((item, index) => {
+              return (
+                <span className="bon-span1" key={index}>
+                  {item}
+                </span>
+              );
+            })}
+          </h1>
+
+          <div className="tech-section">
+            <h3>All About Tech.</h3>
+          </div>
         </section>
       </div>
     </div>
