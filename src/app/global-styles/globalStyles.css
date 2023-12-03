@@ -9,6 +9,10 @@ body {
   font-family: var(--font-kaftan);
 }
 
+.dahlia-span {
+  font-family: var(--font-kaftan);
+}
+
 .global-container {
   margin: 1rem auto;
   width: 90% !important;

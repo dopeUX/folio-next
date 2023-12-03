@@ -246,10 +246,36 @@
              clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 
              span {
-               font-size: 15rem;
+               font-size: 3rem;
                transform: skewY(20deg);
                transform: translateY(300px);
              }
+           }
+
+           .featured-items {
+             width: fit-content;
+            //  margin: .5rem auto 1rem auto;
+             text-align: left;
+
+             .featured-item {
+              display: flex;
+              .image-wrapper {
+                width: fit-content;
+                height: fit-content;
+                margin-top: 1rem; 
+                margin-left: 30rem;
+               .featured-image {
+                 width: 500px;
+                 height: 600px;
+                 object-fit: cover;
+              }
+             }
+              h1 {
+                width: 300px;
+                font-size: 9rem;
+                margin-left: 8rem;
+              }
+            }
            }
          }
        }

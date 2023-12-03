@@ -38,6 +38,23 @@ const Kaftan = localFont({
   ],
   variable: "--font-kaftan",
 });
+const Dahlia = localFont({
+  src: [
+    {
+      path: "../../public/fonts/dahlia-regular.otf",
+      weight: "500",
+    },
+    {
+      path: "../../public/fonts/dahlia-medium.otf",
+      weight: "600",
+    },
+    {
+      path: "../../public/fonts/dahlia-bold.otf",
+      weight: "700",
+    },
+  ],
+  variable: "--font-dahlia",
+});
 
 export default function RootLayout({
   children,
@@ -46,7 +63,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${Neue.variable} ${Kaftan.variable} font-sans`}>
+      <body
+        className={`${Neue.variable} ${Kaftan.variable} ${Dahlia.variable} font-sans`}
+      >
         {children}
       </body>
     </html>

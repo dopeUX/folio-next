@@ -99,6 +99,15 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
         markers: true,
       },
     });
+    const featuredItemsTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: "2300px",
+        end: "+=200px",
+        // scrub: true,
+        markers: true,
+      },
+    });
     timeline.set(".bon-span1", { skewY: 40, skewX: -20 });
     timeline.to(".bon-span1", 1, {
       y: 0,
@@ -233,6 +242,12 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
       delay: 2.8,
       ease: "power1",
     });
+    featuredItemsTimeline.to(".image-wrapper", {
+      marginLeft: 0,
+      stagger: 0.07,
+      duration: 1,
+      ease: "expo.out",
+    });
 
     // gsap.set(".featured-span1", {
     //   scrollTrigger: {
@@ -256,7 +271,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
       ease: "expo.out",
     });
     featuredTimeline.to(".featured-span1", 0.7, {
-      fontSize: "3rem",
+      // fontSize: "3rem",
       delay: 0,
       ease: "expo.out",
     });
@@ -530,12 +545,48 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
               <h2>
                 {featured.split("").map((item, index) => {
                   return (
-                    <span key={index} className="featured-span1">
+                    <span key={index} className="featured-span1 dahlia-span">
                       {item}
                     </span>
                   );
                 })}
               </h2>
+
+              <div className="featured-items">
+                <div className="featured-item">
+                  <div className="image-wrapper">
+                    <Image
+                      className="featured-image"
+                      width={100}
+                      height={200}
+                      alt=""
+                      unoptimized
+                      src={"/assets/image1.jpg"}
+                    ></Image>
+                  </div>
+                  <h1>NOTES PRO</h1>
+                </div>
+                {/* <div className="image-wrapper">
+                  <Image
+                    className="featured-image"
+                    width={100}
+                    height={200}
+                    alt=""
+                    unoptimized
+                    src={"/assets/image2.jpg"}
+                  ></Image>
+                </div>
+                <div className="image-wrapper">
+                  <Image
+                    className="featured-image"
+                    width={100}
+                    height={200}
+                    alt=""
+                    unoptimized
+                    src={"/assets/image3.jpg"}
+                  ></Image>
+                </div> */}
+              </div>
             </div>
           </div>
         </section>

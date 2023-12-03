@@ -217,7 +217,34 @@
           clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 .home-screen .content .featured-work .content .featured h2 span {
-  font-size: 15rem;
+  font-size: 3rem;
   transform: skewY(20deg);
   transform: translateY(300px);
+}
+.home-screen .content .featured-work .content .featured .featured-items {
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: left;
+}
+.home-screen .content .featured-work .content .featured .featured-items .featured-item {
+  display: flex;
+}
+.home-screen .content .featured-work .content .featured .featured-items .featured-item .image-wrapper {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-top: 1rem;
+  margin-left: 30rem;
+}
+.home-screen .content .featured-work .content .featured .featured-items .featured-item .image-wrapper .featured-image {
+  width: 500px;
+  height: 600px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.home-screen .content .featured-work .content .featured .featured-items .featured-item h1 {
+  width: 300px;
+  font-size: 9rem;
+  margin-left: 8rem;
 }/*# sourceMappingURL=HomeScreen.component.css.map */
