@@ -6,6 +6,7 @@ import gsap from "gsap";
 import Image from "next/image";
 import heroImg from "../../../../public/assets/hero-bg.jpg";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ReactPlayer from "react-player";
 export interface HomeScreenProps {
   children?: React.ReactNode;
 }
@@ -29,6 +30,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
     "typesetting  industry.  Lorem  Ipsum  has  been  the  industry's  standard  dummy  text  ever  since  the  1500s,  ";
   const bonDesc3 =
     "when  an  unknown  printer  took  a  galley   of  type  and  scrambled  it  to  make  a  type  specimen  book.";
+  const featured = "fffffeatured.";
   const containerRef = useRef(null);
 
   useLayoutEffect(() => {
@@ -44,7 +46,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
         start: "200px",
         end: "+=600px",
         // scrub: true,
-        markers: true,
+        // markers: true,
       },
     });
     const timeline2 = gsap.timeline({
@@ -53,15 +55,47 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
         start: "300px",
         end: "+=300px",
         // scrub: true,
-        markers: true,
+        // markers: true,
       },
     });
     const timeline3 = gsap.timeline({
+      //for let me cook -----
       scrollTrigger: {
         trigger: document.documentElement,
         start: "600px",
         end: "+=600px",
         scrub: true,
+        // markers: true,
+      },
+    });
+
+    const timeline4 = gsap.timeline({
+      //for video-container
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: "1200px",
+        end: "+=300px",
+        scrub: true,
+        // markers: true,
+      },
+    });
+
+    const timeline5 = gsap.timeline({
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: "2000px",
+        end: "+=300px",
+        scrub: true,
+        // markers: true,
+      },
+    });
+
+    const featuredTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: "2200px",
+        end: "+=200px",
+        // scrub: true,
         markers: true,
       },
     });
@@ -125,6 +159,13 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
       fontSize: "10rem",
     });
 
+    timeline4.to(".player-wrapper", {
+      y: 0,
+      width: "100%",
+    });
+    timeline5.to(".player-wrapper", {
+      width: "90%",
+    });
     // gsap.to(".bon-span1", {
     //   y: 0,
     //   stagger: 0.05,
@@ -191,6 +232,33 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
       duration: 1,
       delay: 2.8,
       ease: "power1",
+    });
+
+    // gsap.set(".featured-span1", {
+    //   scrollTrigger: {
+    //     trigger: document.documentElement,
+    //     start: "1900px",
+    //     end: "+=300px",
+    //     scrub: true,
+    //     markers: true,
+    //   },
+    //   skewY: 50,
+    //   skewX: -40,
+    // });
+    featuredTimeline.set(".featured-span1", { skewY: 40, skewX: -20 });
+    featuredTimeline.to(".featured-span1", 1, {
+      y: 0,
+      stagger: 0.05,
+      duration: 1,
+      skewY: 0,
+      skewX: 0,
+      rotate: 0,
+      ease: "expo.out",
+    });
+    featuredTimeline.to(".featured-span1", 0.7, {
+      fontSize: "3rem",
+      delay: 0,
+      ease: "expo.out",
     });
 
     gsap.to(".hero-img", {
@@ -434,7 +502,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
           </div>
         </section>
 
-        <div className="marquee-sec">
+        {/* <div className="marquee-sec">
           <h2>JavaScript.</h2>
           <h2>JavaScript.</h2>
           <h2>JavaScript.</h2>
@@ -445,7 +513,32 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
           <h2>JavaScript.</h2>
           <h2>JavaScript.</h2>
           <h2>JavaScript.</h2>
-        </div>
+        </div> */}
+        <section className="featured-work">
+          <div className="content">
+            <div className="player-wrapper">
+              <h2>
+                BBBoutique experiences that are holistic, intentional, and
+                express the heart of your brand.
+              </h2>
+              <video className="player" autoPlay loop muted>
+                <source src="/assets/video1.mp4" type="video/mp4"></source>
+              </video>
+            </div>
+
+            <div className="featured global-container">
+              <h2>
+                {featured.split("").map((item, index) => {
+                  return (
+                    <span key={index} className="featured-span1">
+                      {item}
+                    </span>
+                  );
+                })}
+              </h2>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
