@@ -186,6 +186,12 @@
 }
 .home-screen .content .featured-work .content {
   text-align: center;
+  padding-bottom: 2rem;
+}
+.home-screen .content .featured-work .content .view-all {
+  margin-top: 4rem;
+  cursor: pointer;
+  text-decoration: underline;
 }
 .home-screen .content .featured-work .content .player-wrapper {
   position: relative;

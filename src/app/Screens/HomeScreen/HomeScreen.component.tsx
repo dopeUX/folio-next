@@ -751,6 +751,8 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
                 </div>
               </div>
             </div>
+
+            <h3 className="view-all">View All Works.</h3>
           </div>
         </section>
       </div>
