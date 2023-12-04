@@ -22,6 +22,9 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   const allTech = "AAAAAll  About  Tech.";
   const cook = "LLLLLet  Me  Cook!";
   const bonsoir = "Bonsoir!";
+  const projectTitles = {
+    title1: ["NOTES", "PRO"],
+  };
   const scrollRef: any = useRef();
   const bgRef: any = useRef();
   const bonDesc: string =
@@ -96,7 +99,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
         start: "2200px",
         end: "+=200px",
         // scrub: true,
-        markers: true,
+        // markers: true,
       },
     });
     const featuredItemsTimeline = gsap.timeline({
@@ -105,6 +108,42 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
         start: "2300px",
         end: "+=200px",
         // scrub: true,
+        // markers: true,
+      },
+    });
+    const featuredItemTimeline1 = gsap.timeline({
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: "2300px",
+        end: "+=800px",
+        // scrub: true,
+        markers: true,
+      },
+    });
+    const featuredItemTimeline2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: "2800px",
+        end: "+=800px",
+        // scrub: true,
+        markers: true,
+      },
+    });
+    const featuredItemImageTimeline1 = gsap.timeline({
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: "2500px",
+        end: "+=2200px",
+        scrub: true,
+        markers: true,
+      },
+    });
+    const featuredItemImageTimeline2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: "2800px",
+        end: "+=2500px",
+        scrub: true,
         markers: true,
       },
     });
@@ -248,6 +287,43 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
       duration: 1,
       ease: "expo.out",
     });
+
+    featuredItemTimeline1.add("start").to(
+      ".featured-span2",
+      {
+        y: 0,
+        duration: 1,
+        ease: "expo.out",
+      },
+      "start",
+    );
+    featuredItemTimeline2.add("start").to(
+      ".featured-span3",
+      {
+        y: 0,
+        duration: 1,
+        ease: "expo.out",
+      },
+      "start",
+    );
+    featuredItemImageTimeline1.add("start").to(
+      ".featured-image",
+      {
+        y: "-120px",
+        duration: 1,
+        ease: "expo.out",
+      },
+      "start",
+    );
+    featuredItemImageTimeline2.add("start").to(
+      ".featured-image2",
+      {
+        y: "-120px",
+        duration: 1,
+        ease: "expo.out",
+      },
+      "start",
+    );
 
     // gsap.set(".featured-span1", {
     //   scrollTrigger: {
@@ -556,7 +632,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
                 <div className="featured-item">
                   <div className="image-wrapper">
                     <Image
-                      className="featured-image"
+                      className="featured-image image"
                       width={100}
                       height={200}
                       alt=""
@@ -564,28 +640,79 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
                       src={"/assets/image1.jpg"}
                     ></Image>
                   </div>
-                  <h1>NOTES PRO</h1>
+                  <div
+                    className="title-section"
+                    data-scroll
+                    data-scroll-speed="0.2"
+                  >
+                    <h1>
+                      <span className="featured-span2">
+                        {projectTitles.title1[0]}
+                      </span>
+                    </h1>
+                    <h1>
+                      <span className="featured-span2">
+                        {projectTitles.title1[1]}
+                      </span>
+                    </h1>
+                  </div>
                 </div>
-                {/* <div className="image-wrapper">
-                  <Image
-                    className="featured-image"
-                    width={100}
-                    height={200}
-                    alt=""
-                    unoptimized
-                    src={"/assets/image2.jpg"}
-                  ></Image>
+                <div className="featured-item featured-item-reverse">
+                  <div className="image-wrapper">
+                    <Image
+                      className="featured-image2 image"
+                      width={100}
+                      height={200}
+                      alt=""
+                      unoptimized
+                      src={"/assets/image2.jpg"}
+                    ></Image>
+                  </div>
+                  <div
+                    className="title-section"
+                    data-scroll
+                    data-scroll-speed="0.2"
+                  >
+                    <h1>
+                      <span className="featured-span3">
+                        {projectTitles.title1[0]}
+                      </span>
+                    </h1>
+                    <h1>
+                      <span className="featured-span3">
+                        {projectTitles.title1[1]}
+                      </span>
+                    </h1>
+                  </div>
                 </div>
-                <div className="image-wrapper">
-                  <Image
-                    className="featured-image"
-                    width={100}
-                    height={200}
-                    alt=""
-                    unoptimized
-                    src={"/assets/image3.jpg"}
-                  ></Image>
-                </div> */}
+                <div className="featured-item">
+                  <div className="image-wrapper">
+                    <Image
+                      className="featured-image3 image"
+                      width={100}
+                      height={200}
+                      alt=""
+                      unoptimized
+                      src={"/assets/image3.jpg"}
+                    ></Image>
+                  </div>
+                  <div
+                    className="title-section"
+                    data-scroll
+                    data-scroll-speed="0.2"
+                  >
+                    <h1>
+                      <span className="featured-span4">
+                        {projectTitles.title1[0]}
+                      </span>
+                    </h1>
+                    <h1>
+                      <span className="featured-span4">
+                        {projectTitles.title1[1]}
+                      </span>
+                    </h1>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

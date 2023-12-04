@@ -230,21 +230,46 @@
   display: flex;
 }
 .home-screen .content .featured-work .content .featured .featured-items .featured-item .image-wrapper {
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  margin-top: 1rem;
-  margin-left: 30rem;
-}
-.home-screen .content .featured-work .content .featured .featured-items .featured-item .image-wrapper .featured-image {
   width: 500px;
   height: 600px;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top: 1rem;
+  margin-left: 0;
+}
+.home-screen .content .featured-work .content .featured .featured-items .featured-item .image-wrapper .image {
+  width: 100%;
+  height: 100%;
+  transform: translateY(20px) scale(1.5);
   -o-object-fit: cover;
      object-fit: cover;
 }
-.home-screen .content .featured-work .content .featured .featured-items .featured-item h1 {
-  width: 300px;
-  font-size: 9rem;
+.home-screen .content .featured-work .content .featured .featured-items .featured-item .title-section {
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.home-screen .content .featured-work .content .featured .featured-items .featured-item .title-section h1 {
+  width: -moz-fit-content;
+  width: fit-content;
+  text-decoration: underline;
   margin-left: 8rem;
+  display: flex;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+.home-screen .content .featured-work .content .featured .featured-items .featured-item .title-section h1 span {
+  font-size: 8rem;
+  transform: translateY(300px);
+}
+.home-screen .content .featured-work .content .featured .featured-items .featured-item-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.home-screen .content .featured-work .content .featured .featured-items .featured-item-reverse .image-wrapper {
+  margin-left: 10rem;
+}
+.home-screen .content .featured-work .content .featured .featured-items .featured-item-reverse .title-section h1 {
+  margin-left: 0rem;
+  margin-right: 15rem;
 }/*# sourceMappingURL=HomeScreen.component.css.map */
