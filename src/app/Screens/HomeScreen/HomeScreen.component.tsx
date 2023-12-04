@@ -129,6 +129,15 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
         markers: true,
       },
     });
+    const featuredItemTimeline3 = gsap.timeline({
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: "3500px",
+        end: "+=800px",
+        // scrub: true,
+        markers: true,
+      },
+    });
     const featuredItemImageTimeline1 = gsap.timeline({
       scrollTrigger: {
         trigger: document.documentElement,
@@ -142,6 +151,15 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
       scrollTrigger: {
         trigger: document.documentElement,
         start: "2800px",
+        end: "+=2500px",
+        scrub: true,
+        markers: true,
+      },
+    });
+    const featuredItemImageTimeline3 = gsap.timeline({
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: "3500px",
         end: "+=2500px",
         scrub: true,
         markers: true,
@@ -306,6 +324,15 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
       },
       "start",
     );
+    featuredItemTimeline3.add("start").to(
+      ".featured-span4",
+      {
+        y: 0,
+        duration: 1,
+        ease: "expo.out",
+      },
+      "start",
+    );
     featuredItemImageTimeline1.add("start").to(
       ".featured-image",
       {
@@ -317,6 +344,15 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
     );
     featuredItemImageTimeline2.add("start").to(
       ".featured-image2",
+      {
+        y: "-120px",
+        duration: 1,
+        ease: "expo.out",
+      },
+      "start",
+    );
+    featuredItemImageTimeline3.add("start").to(
+      ".featured-image3",
       {
         y: "-120px",
         duration: 1,
