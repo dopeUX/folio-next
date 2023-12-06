@@ -1,16 +1,48 @@
 "use client";
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, {
+  Suspense,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import "./HomeScreen.component.css";
 import DesktopHeader from "@/app/Layouts/DesktopHeader/DesktopHeader.component";
 import gsap from "gsap";
 import Image from "next/image";
 import heroImg from "../../../../public/assets/hero-bg.jpg";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ReactPlayer from "react-player";
+import { Canvas, useThree } from "@react-three/fiber";
+import { useLoader, useFrame } from "@react-three/fiber";
+import { Environment } from "@react-three/drei";
+
+import {
+  OrbitControls,
+  PresentationControls,
+  Stage,
+  useGLTF,
+} from "@react-three/drei";
+import FooterLayout from "@/app/Layouts/FooterLayout/FooterLayout.component";
 export interface HomeScreenProps {
   children?: React.ReactNode;
 }
 
+function Model(props: any) {
+  // useThree(({ camera }) => {
+  //   camera.position.y = 0;
+  //   camera.position.x = 3;
+  //   // camera.lookAt(0, 0, 0);
+  // });
+  const { scene } = useGLTF("/assets/scene2.glb");
+  return <primitive clasName="model" object={scene} {...props} />;
+}
+
+const handleMouseDown = (event: any) => {
+  // Disable rotation on left mouse click
+  if (event.button === 0) {
+    event.stopPropagation();
+  }
+};
 const HomeScreen: React.FC<HomeScreenProps> = () => {
   const text1 = "EMBARK-ON-A";
   const text2 = "DIGITAL-ODYSSEY";
@@ -35,11 +67,25 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
     "when  an  unknown  printer  took  a  galley   of  type  and  scrambled  it  to  make  a  type  specimen  book.";
   const featured = "fffffeatured.";
   const containerRef = useRef(null);
+  const controls: any = useRef();
+  const [mousePosition, setMousePosition] = useState({ x: 10, y: 0 });
 
   useLayoutEffect(() => {
     gsapAction();
+    controls.enablePan = false;
   }, []);
 
+  const handleMouseMove = (e: any) => {
+    // setMousePosition = (e.clientX / window.innerWidth) * 2 - 1;
+    // mousePosition.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+    setMousePosition({
+      x: e.clientX,
+      y: e.clientY,
+    });
+
+    console.log("hhhhhh");
+  };
   const gsapAction = () => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -141,8 +187,8 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
     const featuredItemImageTimeline1 = gsap.timeline({
       scrollTrigger: {
         trigger: document.documentElement,
-        start: "2500px",
-        end: "+=2200px",
+        start: "1900px",
+        end: "+=1000px",
         scrub: true,
         markers: true,
       },
@@ -151,7 +197,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
       scrollTrigger: {
         trigger: document.documentElement,
         start: "2800px",
-        end: "+=2500px",
+        end: "+=1000px",
         scrub: true,
         markers: true,
       },
@@ -160,7 +206,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
       scrollTrigger: {
         trigger: document.documentElement,
         start: "3500px",
-        end: "+=2500px",
+        end: "+=1000px",
         scrub: true,
         markers: true,
       },
@@ -300,10 +346,10 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
       ease: "power1",
     });
     featuredItemsTimeline.to(".image-wrapper", {
-      marginLeft: 0,
-      stagger: 0.07,
-      duration: 1,
-      ease: "expo.out",
+      // marginLeft: 0,
+      // stagger: 0.07,
+      // duration: 1,
+      // ease: "expo.out",
     });
 
     featuredItemTimeline1.add("start").to(
@@ -333,33 +379,54 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
       },
       "start",
     );
-    featuredItemImageTimeline1.add("start").to(
-      ".featured-image",
-      {
-        y: "-120px",
+    featuredItemImageTimeline1
+      .add("start")
+      .to(
+        ".featured-image",
+        {
+          y: "-200px",
+          duration: 1,
+          ease: "expo.out",
+        },
+        "start",
+      )
+      .to(".wrapper1", {
+        x: 0,
         duration: 1,
         ease: "expo.out",
-      },
-      "start",
-    );
-    featuredItemImageTimeline2.add("start").to(
-      ".featured-image2",
-      {
-        y: "-120px",
+      });
+    featuredItemImageTimeline2
+      .add("start")
+      .to(
+        ".featured-image2",
+        {
+          y: "-50px",
+          duration: 1,
+          ease: "expo.out",
+        },
+        "start",
+      )
+      .to(".wrapper2", {
+        x: 0,
         duration: 1,
         ease: "expo.out",
-      },
-      "start",
-    );
-    featuredItemImageTimeline3.add("start").to(
-      ".featured-image3",
-      {
-        y: "-120px",
+      });
+    featuredItemImageTimeline3
+      .add("start")
+      .to(
+        ".featured-image3",
+        {
+          y: "-50px",
+          duration: 1,
+          ease: "expo.out",
+        },
+        "start",
+      )
+      .to(".wrapper3", {
+        x: 0,
         duration: 1,
         ease: "expo.out",
-      },
-      "start",
-    );
+      });
 
     // gsap.set(".featured-span1", {
     //   scrollTrigger: {
@@ -666,7 +733,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
 
               <div className="featured-items">
                 <div className="featured-item">
-                  <div className="image-wrapper">
+                  <div className="image-wrapper wrapper1">
                     <Image
                       className="featured-image image"
                       width={100}
@@ -694,7 +761,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
                   </div>
                 </div>
                 <div className="featured-item featured-item-reverse">
-                  <div className="image-wrapper">
+                  <div className="image-wrapper wrapper2">
                     <Image
                       className="featured-image2 image"
                       width={100}
@@ -722,7 +789,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
                   </div>
                 </div>
                 <div className="featured-item">
-                  <div className="image-wrapper">
+                  <div className="image-wrapper wrapper3">
                     <Image
                       className="featured-image3 image"
                       width={100}
@@ -754,6 +821,69 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
 
             <h3 className="view-all">View All Works.</h3>
           </div>
+        </section>
+
+        <section className="three-model" onMouseMove={handleMouseMove}>
+          <Canvas
+            // camera={{ position: [-5, 2, 10], fov: 60 }}
+            className="canvas"
+            dpr={[1, 2]}
+            // flat
+            // linear
+            // shadows
+            camera={{ fov: 57 }}
+            style={{ position: "absolute" }}
+            onPointerDown={handleMouseDown}
+          >
+            <color attach="background" args={["#f0f0f000"]} />
+            <pointLight position={[10, 0, -20]} intensity={2.0} />
+            {/* {/* <ambientLight intensity={0.5} /> */}
+            <spotLight position={[10, 15, 10]} angle={0.3} />
+            <directionalLight
+              ref={mousePosition}
+              position={[mousePosition.x, mousePosition.y, -20]}
+              color={0x6b69fa}
+              intensity={4}
+            />
+            <directionalLight
+              ref={mousePosition}
+              position={[-10, 0, -20]}
+              color={0xe64c4c}
+              intensity={7}
+            />
+            <directionalLight
+              ref={mousePosition}
+              position={[-5, -10, -10]}
+              color={0x2a949b}
+              intensity={6}
+            />
+            <OrbitControls
+              enabled={true}
+              enableZoom={false}
+              autoRotate={true}
+              rotateSpeed={1.5}
+              enablePan={false}
+              enableRotate={false}
+            />
+            {/* <PresentationControls
+              speed={1.5}
+              global
+              zoom={2.0}
+              polar={[-0.1, Math.PI / 4]}
+              enabled={false}
+            > */}
+            <Suspense fallback={null}>
+              <Stage>
+                <Model scale={1.8} />
+                <Environment preset="sunset" />
+              </Stage>
+            </Suspense>
+            {/* </PresentationControls> */}
+          </Canvas>
+        </section>
+
+        <section className="footer">
+          <FooterLayout />
         </section>
       </div>
     </div>

@@ -1,0 +1,50 @@
+.footer {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: auto;
+  margin-bottom: -1rem;
+}
+.footer .footer-content {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  padding: 0rem 5rem;
+  justify-content: space-between;
+  align-items: baseline;
+  position: relative;
+}
+.footer .footer-content .left-col {
+  display: flex;
+}
+.footer .footer-content .left-col .text1 {
+  width: 150px;
+  margin-right: 3rem;
+}
+.footer .footer-content .left-col h2 {
+  margin-right: 3rem;
+  cursor: pointer;
+}
+.footer .footer-content .right-col {
+  overflow: hidden;
+  position: absolute;
+  right: 0rem;
+  bottom: 0rem;
+  box-sizing: border-box;
+}
+.footer .footer-content .right-col h3 {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+.footer .footer-content .right-col h3 span {
+  transform: translateY(150px) translateX(100px);
+  font-size: 25rem;
+}/*# sourceMappingURL=FooterLayout.component.css.map */
