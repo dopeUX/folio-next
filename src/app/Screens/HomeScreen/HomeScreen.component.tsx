@@ -39,7 +39,7 @@ function Model(props: any) {
   {
     useHelper(dirLight, DirectionalLightHelper);
   }
-  return <primitive clasName="model" object={scene} {...props} />;
+  return <primitive className="model" object={scene} {...props} />;
 }
 
 const handleMouseDown = (event: any) => {
@@ -841,7 +841,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
             style={{ position: "absolute" }}
             onPointerDown={handleMouseDown}
           >
-            <color attach="background" args={["#f0f0f000"]} />
+            <color attach="background" args={["#000000"]} />
             <pointLight position={[10, 0, -20]} intensity={2.0} />
             {/* {/* <ambientLight intensity={0.5} /> */}
             <spotLight position={[10, 15, 10]} angle={0.3} />

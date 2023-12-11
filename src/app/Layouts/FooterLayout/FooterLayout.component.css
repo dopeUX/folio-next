@@ -2,6 +2,7 @@
   width: 100%;
   height: -moz-fit-content;
   height: fit-content;
+  background-color: black;
   margin: auto;
   margin-bottom: -1rem;
 }
