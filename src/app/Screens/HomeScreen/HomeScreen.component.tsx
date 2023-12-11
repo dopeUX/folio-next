@@ -12,9 +12,10 @@ import gsap from "gsap";
 import Image from "next/image";
 import heroImg from "../../../../public/assets/hero-bg.jpg";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Canvas, useThree } from "@react-three/fiber";
-import { useLoader, useFrame } from "@react-three/fiber";
-import { Environment } from "@react-three/drei";
+import { Canvas, DirectionalLightProps, useThree } from "@react-three/fiber";
+// import { useLoader, useFrame } from "@react-three/fiber";
+import { Environment, useHelper } from "@react-three/drei";
+import { DirectionalLightHelper } from "three";
 
 import {
   OrbitControls,
@@ -27,6 +28,7 @@ export interface HomeScreenProps {
   children?: React.ReactNode;
 }
 
+let dirLight: any;
 function Model(props: any) {
   // useThree(({ camera }) => {
   //   camera.position.y = 0;
@@ -34,6 +36,9 @@ function Model(props: any) {
   //   // camera.lookAt(0, 0, 0);
   // });
   const { scene } = useGLTF("/assets/scene2.glb");
+  {
+    useHelper(dirLight, DirectionalLightHelper);
+  }
   return <primitive clasName="model" object={scene} {...props} />;
 }
 
@@ -69,6 +74,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   const containerRef = useRef(null);
   const controls: any = useRef();
   const [mousePosition, setMousePosition] = useState({ x: 10, y: 0 });
+  dirLight = useRef(null);
 
   useLayoutEffect(() => {
     gsapAction();
@@ -840,22 +846,21 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
             {/* {/* <ambientLight intensity={0.5} /> */}
             <spotLight position={[10, 15, 10]} angle={0.3} />
             <directionalLight
-              ref={mousePosition}
-              position={[mousePosition.x, mousePosition.y, -20]}
+              position={[-10, 0, -20]}
               color={0x6b69fa}
-              intensity={4}
+              intensity={3}
             />
             <directionalLight
-              ref={mousePosition}
-              position={[-10, 0, -20]}
+              position={[mousePosition.x, mousePosition.y, -20]}
               color={0xe64c4c}
               intensity={7}
             />
+            {/* <directionalLightHelper light={dirLight} /> */}
             <directionalLight
-              ref={mousePosition}
-              position={[-5, -10, -10]}
+              ref={dirLight}
+              position={[5, 10, -10]}
               color={0x2a949b}
-              intensity={6}
+              intensity={3}
             />
             <OrbitControls
               enabled={true}
@@ -873,18 +878,16 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
               enabled={false}
             > */}
             <Suspense fallback={null}>
-              <Stage>
+              <Stage intensity={0.6} castShadow={false} environment={undefined}>
+                <Environment path="/assets/" files={"venice.hdr"} />
                 <Model scale={1.8} />
-                <Environment preset="sunset" />
               </Stage>
             </Suspense>
             {/* </PresentationControls> */}
           </Canvas>
         </section>
 
-        <section className="footer">
-          <FooterLayout />
-        </section>
+        <section className="footer">{<FooterLayout />}</section>
       </div>
     </div>
   );
