@@ -841,27 +841,27 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
             style={{ position: "absolute" }}
             onPointerDown={handleMouseDown}
           >
-            <color attach="background" args={["#000000"]} />
-            <pointLight position={[10, 0, -20]} intensity={2.0} />
+            <color args={["#00000000"]} />
+            {/* <pointLight position={[10, 0, -20]} intensity={2.0} /> */}
             {/* {/* <ambientLight intensity={0.5} /> */}
-            <spotLight position={[10, 15, 10]} angle={0.3} />
+            {/* <spotLight position={[10, 15, 10]} angle={0.3} />
             <directionalLight
               position={[-10, 0, -20]}
               color={0x6b69fa}
               intensity={3}
-            />
-            <directionalLight
+            /> */}
+            {/* <directionalLight
               position={[mousePosition.x, mousePosition.y, -20]}
               color={0xe64c4c}
               intensity={7}
-            />
+            /> */}
             {/* <directionalLightHelper light={dirLight} /> */}
-            <directionalLight
+            {/* <directionalLight
               ref={dirLight}
               position={[5, 10, -10]}
               color={0x2a949b}
               intensity={3}
-            />
+            /> */}
             <OrbitControls
               enabled={true}
               enableZoom={false}
@@ -878,8 +878,8 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
               enabled={false}
             > */}
             <Suspense fallback={null}>
-              <Stage intensity={0.6} castShadow={false} environment={undefined}>
-                <Environment path="/assets/" files={"venice.hdr"} />
+              <Stage intensity={0.6} castShadow={false} environment={null}>
+                {/* <Environment path="/assets/" files={"venice.hdr"} /> */}
                 <Model scale={1.8} />
               </Stage>
             </Suspense>
@@ -887,7 +887,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
           </Canvas>
         </section>
 
-        <section className="footer">{<FooterLayout />}</section>
+        <section className="footer-section">{<FooterLayout />}</section>
       </div>
     </div>
   );

@@ -3,15 +3,16 @@
   height: -moz-fit-content;
   height: fit-content;
   background-color: black;
-  margin: auto;
-  margin-bottom: -1rem;
+  padding: 0;
+  margin-bottom: 0;
 }
 .footer .footer-content {
   width: 100%;
   height: -moz-fit-content;
   height: fit-content;
   display: flex;
-  padding: 0rem 5rem;
+  padding: 0rem 3rem;
+  background-color: black;
   justify-content: space-between;
   align-items: baseline;
   position: relative;
@@ -22,15 +23,18 @@
 .footer .footer-content .left-col .text1 {
   width: 150px;
   margin-right: 3rem;
+  color: white;
 }
 .footer .footer-content .left-col h2 {
   margin-right: 3rem;
   cursor: pointer;
+  color: white;
 }
 .footer .footer-content .right-col {
   overflow: hidden;
   position: absolute;
-  right: 0rem;
+  left: auto;
+  right: 5rem;
   bottom: 0rem;
   box-sizing: border-box;
 }
@@ -42,6 +46,7 @@
   margin: 0;
   padding: 0;
   display: flex;
+  color: white;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
           clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }

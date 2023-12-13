@@ -8,7 +8,7 @@ export interface FooterLayoutProps {
 const FooterLayout: React.FC<FooterLayoutProps> = () => {
   return (
     <div className="footer">
-      <div className="footer-content global-container">
+      <div className="footer-content">
         <section className="left-col">
           <h3 className="text1">Bichess Lie, compilers don’t!</h3>
           <h2>Work.</h2>

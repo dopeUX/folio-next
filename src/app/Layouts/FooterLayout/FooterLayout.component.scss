@@ -2,13 +2,16 @@
     width: 100%;
     height: fit-content;
     background-color: black;
-    margin: auto;
-    margin-bottom: -1rem;
+    // background-color: blue;
+    // margin: auto;
+    padding: 0;
+    margin-bottom: 0;
    .footer-content {
      width: 100%;
      height: fit-content;   
      display: flex; 
-     padding: 0rem 5rem;  
+     padding: 0rem 3rem;  
+     background-color: black;
      justify-content: space-between;
      align-items: baseline;
      position: relative;
@@ -18,11 +21,13 @@
      .text1 {
        width: 150px;
        margin-right: 3rem;
+       color: white;
       }
 
       h2 {
         margin-right: 3rem;
         cursor: pointer;
+        color: white;
       }
     }
      
@@ -32,7 +37,8 @@
         // background-color: black;
         overflow: hidden;
         position: absolute;
-        right: 0rem;
+        left:auto;
+        right: 5rem;
         bottom: 0rem;
         box-sizing: border-box;
         h3 {
@@ -41,6 +47,7 @@
             margin: 0;
             padding: 0;
             display: flex;
+            color: white;
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
             // font-size: 30rem;
             span {
