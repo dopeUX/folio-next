@@ -1,4 +1,5 @@
 "use client";
+"@ts-ignore";
 import React, {
   Suspense,
   useEffect,
@@ -12,10 +13,7 @@ import gsap from "gsap";
 import Image from "next/image";
 import heroImg from "../../../../public/assets/hero-bg.jpg";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Canvas, DirectionalLightProps, useThree } from "@react-three/fiber";
-// import { useLoader, useFrame } from "@react-three/fiber";
-import { Environment, useHelper } from "@react-three/drei";
-import { DirectionalLightHelper } from "three";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 
 import {
   OrbitControls,
@@ -29,6 +27,7 @@ export interface HomeScreenProps {
 }
 
 let dirLight: any;
+let modelRef: any;
 function Model(props: any) {
   // useThree(({ camera }) => {
   //   camera.position.y = 0;
@@ -37,9 +36,43 @@ function Model(props: any) {
   // });
   const { scene } = useGLTF("/assets/scene2.glb");
   {
-    useHelper(dirLight, DirectionalLightHelper);
+    // useHelper(dirLight, PointLightHelper);
   }
-  return <primitive className="model" object={scene} {...props} />;
+  const { camera } = useThree();
+
+  const updateLightPosition = (x: any, y: any) => {
+    gsap.to(dirLight.current.position, {
+      x: x,
+      y: y,
+      z: 2,
+      duration: 0.1,
+      ease: "power2.inOut",
+    });
+  };
+
+  const updateModelPosition = (x: any) => {
+    const moveDistance = 0.2; // Adjust the distance as needed
+    const targetX = x > 0 ? -moveDistance : moveDistance;
+
+    gsap.to(modelRef.current.position, {
+      x: targetX,
+      duration: 0.2,
+      ease: "power2.inOut",
+    });
+  };
+  useFrame(({ mouse }) => {
+    // Update camera position based on mouse (for OrbitControls)
+    // camera.position.x += (mouse.x * 5 - camera.position.x) * 0.05;
+    // camera.position.y += (-mouse.y * 5 - camera.position.y) * 0.05;
+    // camera.position.x;
+    camera.lookAt(0, 0, 0);
+    updateLightPosition(mouse.x, mouse.y);
+    updateModelPosition(mouse.x);
+  });
+
+  return (
+    <primitive className="model" ref={modelRef} object={scene} {...props} />
+  );
 }
 
 const handleMouseDown = (event: any) => {
@@ -74,12 +107,30 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   const containerRef = useRef(null);
   const controls: any = useRef();
   const [mousePosition, setMousePosition] = useState({ x: 10, y: 0 });
+  const [light, setLight] = useState(false);
   dirLight = useRef(null);
+  modelRef = useRef(null);
 
   useLayoutEffect(() => {
     gsapAction();
     controls.enablePan = false;
   }, []);
+
+  useEffect(() => {
+    // Wait for the model to load
+    if (modelRef.current) {
+      // Set the initial position of the model
+      const initialModelPosition = { x: 0, y: 0, z: 0 };
+      gsap.set(modelRef.current.position, {
+        x: 0,
+        y: 0,
+        z: 0,
+      });
+
+      // Set the initial position of the light in front of the model
+      dirLight.current.position.set(0, 0, 5);
+    }
+  }, [modelRef]);
 
   const handleMouseMove = (e: any) => {
     // setMousePosition = (e.clientX / window.innerWidth) * 2 - 1;
@@ -837,7 +888,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
             // flat
             // linear
             // shadows
-            camera={{ fov: 57 }}
+            camera={{ fov: 50 }}
             style={{ position: "absolute" }}
             onPointerDown={handleMouseDown}
           >
@@ -850,14 +901,17 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
               color={0x6b69fa}
               intensity={3}
             /> */}
-            {/* <directionalLight
-              position={[mousePosition.x, mousePosition.y, -20]}
-              color={0xe64c4c}
-              intensity={7}
-            /> */}
+            {
+              <pointLight
+                ref={dirLight}
+                position={[0, 0, 0]}
+                color={0xe64c4c}
+                intensity={5}
+              />
+            }
             {/* <directionalLightHelper light={dirLight} /> */}
             {/* <directionalLight
-              ref={dirLight}
+              
               position={[5, 10, -10]}
               color={0x2a949b}
               intensity={3}
@@ -865,7 +919,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
             <OrbitControls
               enabled={true}
               enableZoom={false}
-              autoRotate={true}
+              autoRotate={false}
               rotateSpeed={1.5}
               enablePan={false}
               enableRotate={false}
@@ -885,6 +939,16 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
             </Suspense>
             {/* </PresentationControls> */}
           </Canvas>
+
+          <div
+            className="light-wrapper"
+            onMouseEnter={() => {
+              setLight(true);
+            }}
+            onMouseLeave={() => {
+              setLight(false);
+            }}
+          ></div>
         </section>
 
         <section className="footer-section">{<FooterLayout />}</section>

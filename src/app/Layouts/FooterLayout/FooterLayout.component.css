@@ -4,12 +4,12 @@
   height: fit-content;
   background-color: black;
   padding: 0;
+  z-index: 15;
   margin-bottom: 0;
 }
 .footer .footer-content {
   width: 100%;
-  height: -moz-fit-content;
-  height: fit-content;
+  height: 250px;
   display: flex;
   padding: 0rem 3rem;
   background-color: black;
@@ -19,6 +19,9 @@
 }
 .footer .footer-content .left-col {
   display: flex;
+  align-items: baseline;
+  margin-bottom: 0;
+  margin-top: auto;
 }
 .footer .footer-content .left-col .text1 {
   width: 150px;
