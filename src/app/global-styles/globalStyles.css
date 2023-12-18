@@ -11,7 +11,7 @@ body {
 }
 
 .dahlia-span {
-  font-family: var(--font-kaftan);
+  font-family: var(--font-dahlia);
 }
 
 .global-container {
@@ -31,4 +31,15 @@ body {
   width: 100%;
   height: 800px;
   background-color: green;
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  z-index: 999 !important;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  pointer-events: none;
 }/*# sourceMappingURL=globalStyles.css.map */

@@ -22,6 +22,7 @@ import {
   useGLTF,
 } from "@react-three/drei";
 import FooterLayout from "@/app/Layouts/FooterLayout/FooterLayout.component";
+import Navbutton from "@/app/common/Navbutton/Navbutton";
 export interface HomeScreenProps {
   children?: React.ReactNode;
 }
@@ -530,6 +531,9 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   };
   return (
     <div className="home-screen" ref={scrollRef}>
+      <div className="nav-btn">
+        <Navbutton />
+      </div>
       <Image
         className="hero-img"
         data-scroll

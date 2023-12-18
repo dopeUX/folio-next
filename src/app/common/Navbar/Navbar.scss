@@ -1,0 +1,14 @@
+.navbar {
+    display: flex;
+
+    h1 {
+        font-size: 4rem;
+        font-weight: 600;
+        margin:auto 1.3rem;
+        cursor: pointer;
+
+        &:hover ~ .custom-cursor {
+            transform: scale(5); 
+        };
+    }
+}

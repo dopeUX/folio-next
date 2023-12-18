@@ -9,6 +9,18 @@
     // background-color: black;
     // padding-bottom: 5rem;
     justify-content: center;
+    // position: relative;
+
+    .nav-btn {
+      width:fit-content;
+      height: fit-content;
+      position: fixed;
+      right:3rem;
+      top: 0;
+      bottom: 0;
+      // cursor: pointer;
+      margin: auto auto auto auto;
+    }
     
     .hero-img {
        width: 100%;
@@ -196,6 +208,7 @@
               margin: auto;
               text-align: center;
               font-size: 5rem;
+              // mix-blend-mode: difference;
               display: flex;
               clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
               

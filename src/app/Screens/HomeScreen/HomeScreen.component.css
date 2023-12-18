@@ -6,6 +6,17 @@
   overflow-x: hidden;
   justify-content: center;
 }
+.home-screen .nav-btn {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: fixed;
+  right: 3rem;
+  top: 0;
+  bottom: 0;
+  margin: auto auto auto auto;
+}
 .home-screen .hero-img {
   width: 100%;
   height: 100vh;
