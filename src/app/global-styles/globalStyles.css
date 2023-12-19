@@ -35,11 +35,13 @@ body {
 
 .custom-cursor {
   position: fixed;
-  width: 20px;
-  height: 20px;
+  width: 32px;
+  height: 32px;
   background-color: black;
   z-index: 999 !important;
   border-radius: 50%;
   transition: all 0.2s ease;
   pointer-events: none;
+  left: 0;
+  top: 0;
 }/*# sourceMappingURL=globalStyles.css.map */

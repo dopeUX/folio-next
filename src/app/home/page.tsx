@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <AppLayout>
       {showNav && <NavigationLayoutWhite />}
-      <HomeScreen />
+      {/* <HomeScreen /> */}
     </AppLayout>
   );
 };

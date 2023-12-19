@@ -31,12 +31,17 @@ body {
 
 .custom-cursor {
   position: fixed;
-  width: 20px;
-  height: 20px;
+  width: 32px;
+  height: 32px;
   background-color: black;
+  // background-color: yellow;
   z-index: 999 !important;
   // mix-blend-mode: difference;
   border-radius: 50%;
   transition: all .2s ease;
   pointer-events: none;
+  // background-color: #dbdbdbae;
+  // backdrop-filter: blur(20px);
+  left:0;
+  top:0;
 }

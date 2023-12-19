@@ -5,8 +5,4 @@
   font-size: 4rem;
   font-weight: 600;
   margin: auto 1.3rem;
-  cursor: pointer;
-}
-.navbar h1:hover ~ .custom-cursor {
-  transform: scale(5);
 }/*# sourceMappingURL=Navbar.css.map */
