@@ -5,9 +5,19 @@ import HomeScreen from "../Screens/HomeScreen/HomeScreen.component";
 import "../global-styles/globalStyles.css";
 import LocomotiveScroll from "locomotive-scroll";
 import NavigationLayoutWhite from "../Layouts/NavigationLayoutWhite/NavigationLayoutWhite";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
+import OverlapLoadingLayout from "../Layouts/OverlapLoadingLayout/OverlapLoadingLayout";
+import DesktopHeader from "../Layouts/DesktopHeader/DesktopHeader.component";
+import Navbutton from "../common/Hamburger/Hamburger";
 
 const Home = () => {
-  const showNav = true;
+  const showNav = useSelector((state: RootState) => {
+    return state.AppReducer.showNavPage;
+  });
+  const overlapLoading = useSelector((state: RootState) => {
+    return state.AppReducer.overlapLoadingPage;
+  });
   const [cursorX, setCursorX] = useState();
   const [cursorY, setCursorY] = useState();
   useEffect(() => {
@@ -18,8 +28,11 @@ const Home = () => {
   }, []);
   return (
     <AppLayout>
+      {/* <DesktopHeader /> */}
+      {overlapLoading && <OverlapLoadingLayout />}
       {showNav && <NavigationLayoutWhite />}
-      {/* <HomeScreen /> */}
+      <Navbutton />
+      <HomeScreen />
     </AppLayout>
   );
 };

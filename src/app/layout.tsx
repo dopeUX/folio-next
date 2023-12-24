@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "@next/font/local";
 import "../app/global-styles/globalStyles.css";
+import { ReduxProvider } from "./store/Provider";
 
 export const metadata: Metadata = {
   title: "De Stonks",
@@ -66,7 +67,7 @@ export default function RootLayout({
       <body
         className={`${Neue.variable} ${Kaftan.variable} ${Dahlia.variable} font-sans`}
       >
-        {children}
+        <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
   );

@@ -35,8 +35,8 @@ body {
 
 .custom-cursor {
   position: fixed;
-  width: 32px;
-  height: 32px;
+  width: 20px;
+  height: 20px;
   background-color: black;
   z-index: 999 !important;
   border-radius: 50%;

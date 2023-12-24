@@ -22,7 +22,10 @@ import {
   useGLTF,
 } from "@react-three/drei";
 import FooterLayout from "@/app/Layouts/FooterLayout/FooterLayout.component";
-import Navbutton from "@/app/common/Navbutton/Navbutton";
+import Navbutton from "@/app/common/Hamburger/Hamburger";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/store/store";
+
 export interface HomeScreenProps {
   children?: React.ReactNode;
 }
@@ -77,7 +80,6 @@ function Model(props: any) {
 }
 
 const handleMouseDown = (event: any) => {
-  // Disable rotation on left mouse click
   if (event.button === 0) {
     event.stopPropagation();
   }
@@ -96,7 +98,6 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   const projectTitles = {
     title1: ["NOTES", "PRO"],
   };
-  const scrollRef: any = useRef();
   const bgRef: any = useRef();
   const bonDesc: string =
     "Lorem  Ipsum  is  simply  dummy  text  of  the  printing  and   ";
@@ -111,6 +112,10 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   const [light, setLight] = useState(false);
   dirLight = useRef(null);
   modelRef = useRef(null);
+  const homePageRef: any = useRef();
+  const overlapLoading = useSelector((state: RootState) => {
+    return state.AppReducer.overlapLoadingPage;
+  });
 
   useLayoutEffect(() => {
     gsapAction();
@@ -132,6 +137,28 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
       dirLight.current.position.set(0, 0, 5);
     }
   }, [modelRef]);
+
+  useEffect(() => {
+    if (overlapLoading) {
+      gsap.to(homePageRef.current, {
+        scale: 0.7,
+        duration: 1.5,
+        opacity: 0,
+        delay: 0.3,
+        ease: "expo.inOut",
+      });
+
+      gsap.to(".hero-img", {
+        width: "25%",
+        height: "45vh",
+        top: "13rem",
+        duration: 1.5,
+        delay: 0.3,
+        opacity: 0,
+        ease: "expo.inOut",
+      });
+    }
+  }, [overlapLoading]);
 
   const handleMouseMove = (e: any) => {
     // setMousePosition = (e.clientX / window.innerWidth) * 2 - 1;
@@ -519,21 +546,17 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
       duration: 1,
       top: "1rem",
       ease: "power4.out",
-      //   scale: 1.5,
       delay: 2,
-      stagger: {
-        amount: 1.5,
-        grid: "auto",
-        from: "center",
-      },
-      //   scale: 2.0,
+      // stagger: {
+      //   amount: 1.9,
+      //   grid: "auto",
+      //   from: "center",
+      // },
     });
   };
   return (
-    <div className="home-screen" ref={scrollRef}>
-      <div className="nav-btn">
-        <Navbutton />
-      </div>
+    <div className="home-screen">
+      <div className="nav-btn"></div>
       <Image
         className="hero-img"
         data-scroll
@@ -542,10 +565,8 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
         ref={bgRef}
         alt=""
       />
-      <div className="header">
-        <DesktopHeader />
-      </div>
-      <div className="content">
+      <div className="header"></div>
+      <div className="content" ref={homePageRef}>
         <section className="home-hero global-container">
           <section className="left-col">
             {/* <div className="hero-head-wrapper"> */}

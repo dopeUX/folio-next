@@ -1,7 +1,17 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, {
+  Suspense,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import "./NavigationLayoutWhite.css";
 import Navbar from "@/app/common/Navbar/Navbar";
 import { motion } from "framer-motion";
+import { RootState } from "@/app/store/store";
+import { useDispatch, useSelector } from "react-redux";
+import gsap from "gsap";
+import { updateNavPageState } from "@/app/store/AppSlice";
 export interface NavigationLayoutWhiteProps {
   children?: React.ReactNode;
 }
@@ -9,6 +19,23 @@ export interface NavigationLayoutWhiteProps {
 const NavigationLayoutBlack: React.FC<NavigationLayoutWhiteProps> = () => {
   const [cursorX, setCursorX] = useState(0);
   const [cursorY, setCursorY] = useState(0);
+  const showNavPage = useSelector((state: RootState) => {
+    return state.AppReducer.showNavPage;
+  });
+  const dispatch = useDispatch();
+  const navRef: any = useRef();
+  useLayoutEffect(() => {
+    if (showNavPage) {
+      gsap.set(navRef.current, {
+        opacity: 0,
+      });
+      gsap.to(navRef.current, {
+        opacity: 1,
+        duration: 0.5,
+        ease: "power2.inOut",
+      });
+    }
+  }, [showNavPage]);
   useEffect(() => {
     window.addEventListener("mousemove", (e: any) => {
       console.log(e.clientX, e.clientY, "sss");
@@ -21,26 +48,56 @@ const NavigationLayoutBlack: React.FC<NavigationLayoutWhiteProps> = () => {
     default: {
       x: cursorX - 16,
       y: cursorY - 16,
+      transition: {
+        type: "spring",
+        mass: 0.6,
+      },
     },
     text: {
-      width: 300,
-      height: 150,
-      borderRadius: 0,
+      width: 200,
+      height: 200,
+      borderRadius: "50%",
       x: cursorX - 75,
       y: cursorY - 75,
-      backgroundColor: "white",
       background:
-        "url(https://i.pinimg.com/originals/9c/1e/ae/9c1eaefbfdea7ec4bed8674f012c2cf0.gif)",
+        "url(https://i.pinimg.com/originals/2e/68/8d/2e688dc2a07cee44c3d8f1f7f6d547b4.gif)",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      mixBlendMode: "difference",
+    },
+    closeBtn: {
+      width: 80,
+      height: 80,
+      x: cursorX - 75,
+      y: cursorY - 75,
       mixBlendMode: "difference",
     },
   };
+
+  const closeDialog = () => {
+    if (showNavPage) {
+      gsap.to(navRef.current, {
+        opacity: 0,
+        duration: 0.5,
+        ease: "power2.inOut",
+      });
+      setTimeout(() => {
+        dispatch(updateNavPageState(false));
+      }, 600);
+    }
+  };
   return (
-    <div className="navigation-layout">
+    <div className="navigation-layout" ref={navRef}>
       <motion.div
         className="custom-cursor"
         variants={variants}
         animate={cursorVariant}
-        transition={{ duration: 0.3 }}
+        transition={{
+          type: "spring",
+          stiffness: 500,
+          damping: 28,
+        }}
       ></motion.div>
       {/* <div
         className="custom-cursor"
@@ -50,6 +107,20 @@ const NavigationLayoutBlack: React.FC<NavigationLayoutWhiteProps> = () => {
         }}
       ></div> */}
       <div className="content">
+        <div
+          className="close-btn-content"
+          onClick={() => {
+            closeDialog();
+          }}
+          onMouseEnter={() => {
+            setCursorVariant("closeBtn");
+          }}
+          onMouseLeave={() => {
+            setCursorVariant("default");
+          }}
+        >
+          <div className="close-btn"></div>
+        </div>
         <div className="centre-content">
           <div
             className="navbar"
@@ -60,7 +131,11 @@ const NavigationLayoutBlack: React.FC<NavigationLayoutWhiteProps> = () => {
               setCursorVariant("default");
             }}
           >
-            <Navbar />
+            <Navbar
+              click={() => {
+                closeDialog();
+              }}
+            />
           </div>
         </div>
         <div className="bottom-left-content">

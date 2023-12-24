@@ -194,7 +194,7 @@
 .home-screen .content .featured-work {
   width: 100%;
   position: relative;
-  z-index: 2;
+  z-index: -1;
   height: -moz-fit-content;
   height: fit-content;
   background-color: #F0F0F0;

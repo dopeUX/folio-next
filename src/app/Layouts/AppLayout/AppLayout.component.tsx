@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import "./AppLayout.component.css";
+import DesktopHeader from "../DesktopHeader/DesktopHeader.component";
 
 export interface AppLayoutProps {
   children?: React.ReactNode;
@@ -16,6 +17,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children, ref }) => {
   }, []);
   return (
     <div ref={ref} className="app-screen">
+      <DesktopHeader />
       {children}
     </div>
   );
