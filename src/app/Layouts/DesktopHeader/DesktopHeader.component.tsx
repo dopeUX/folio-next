@@ -1,5 +1,5 @@
 "use client";
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import "./DesktopHeader.component.css";
 import gsap from "gsap";
 import SplitType from "split-type";
@@ -9,7 +9,7 @@ export interface DesktopHeaderProps {
 }
 
 const DesktopHeader: React.FC<DesktopHeaderProps> = () => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     // const name = new SplitType(".name");
     gsap.to(".name", {
       y: 0,
@@ -17,6 +17,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = () => {
       stagger: 0.05,
       delay: 2.8,
     });
+    console.log("iiiiii");
   }, []);
   return (
     <div className="desktop-header global-container">

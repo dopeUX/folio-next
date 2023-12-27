@@ -3,10 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 interface stateTypes {
   showNavPage:boolean;
   overlapLoadingPage:boolean;
+  testVar: boolean;
 }
 const initialState: stateTypes = {
    showNavPage:false,
-   overlapLoadingPage:false
+   overlapLoadingPage:false,
+   testVar: false
 }
 
 export const AppSlice = createSlice({
@@ -18,10 +20,13 @@ export const AppSlice = createSlice({
       },
       updateOverlapLoadingPage:(state, action) => {
          state.overlapLoadingPage = action.payload;
+      },
+      updateTestVar:(state, action) => {
+         state.testVar = action.payload
       }
     }
 })
 
 
-export const {updateNavPageState, updateOverlapLoadingPage} = AppSlice.actions;
+export const {updateNavPageState, updateOverlapLoadingPage, updateTestVar} = AppSlice.actions;
 export default AppSlice.reducer;

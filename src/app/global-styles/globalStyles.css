@@ -44,4 +44,9 @@ body {
   pointer-events: none;
   left: 0;
   top: 0;
+}
+
+.over-div {
+  width: 100%;
+  height: 100%;
 }/*# sourceMappingURL=globalStyles.css.map */
