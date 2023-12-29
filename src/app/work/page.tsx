@@ -19,15 +19,13 @@ const Work: React.FC<any> = () => {
   const test = useSelector((state: RootState) => {
     return state.AppReducer.testVar;
   });
-  useEffect(() => {
-    console.log(test, "ttttttt");
-  }, []);
 
   return (
     <>
       {/* <DesktopHeader /> */}
       {overlapLoading && <OverlapLoadingLayout />}
       {showNav && <NavigationLayoutWhite />}
+      <WorkPageScreen />
     </>
   );
 };
