@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import "./AppLayout.component.css";
 import DesktopHeader from "../DesktopHeader/DesktopHeader.component";
 import Navbutton from "@/app/common/Hamburger/Hamburger";
+import LocomotiveScroll from "locomotive-scroll";
 
 export interface AppLayoutProps {
   children?: React.ReactNode;
@@ -12,8 +13,13 @@ export interface AppLayoutProps {
 const AppLayout: React.FC<AppLayoutProps> = ({ children, ref }) => {
   useEffect(() => {
     (async () => {
-      const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      const locomotiveScroll = new LocomotiveScroll();
+      // const LocomotiveScroll = (await import("locomotive-scroll")).default;
+      // const locomotiveScroll = new LocomotiveScroll({
+      //   el: document.querySelector("[data-scroll-container]") as HTMLElement,
+      //   smooth: true,
+      //   getDirection: true,
+      //   direction: "horizontal",
+      // });
     })();
   }, []);
   return (

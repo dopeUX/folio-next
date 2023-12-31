@@ -1,0 +1,28 @@
+import { useRef, useEffect } from "react";
+import gsap from 'gsap'; 
+
+export default function useHorizontalScroll() {
+  const elRef = useRef();
+  useEffect(() => {
+    const el = elRef.current;
+    if (el) {
+      const onWheel = e => {
+        if (e.deltaY == 0) return;
+        e.preventDefault();
+        
+        gsap.to(el, {
+          scrollTo: {x:el.scrollLeft + e.deltaY},
+          ease:"expo.inOut",
+          duration: 0.3
+        })
+        // el.scrollTo({
+        //   left: el.scrollLeft + e.deltaY,
+        //   behavior: "smooth"
+        // });
+      };
+      el.addEventListener("wheel", onWheel);
+      return () => el.removeEventListener("wheel", onWheel);
+    }
+  }, []);
+  return elRef;
+}
