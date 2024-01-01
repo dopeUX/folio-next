@@ -20,6 +20,17 @@ const WorkPageScreen: React.FC<WorkPageProps> = () => {
   const [cursorVariant, setCursorVariant] = useState("default");
   const [cursorX, setCursorX] = useState(0);
   const [cursorY, setCursorY] = useState(0);
+  const [textVariant, setTextVariant] = useState("default");
+  const textVariants: any = {
+    default: {
+      x: cursorX - 16,
+      y: cursorY - 16,
+      transition: {
+        type: "spring",
+        mass: 0.6,
+      },
+    },
+  };
   const variants: any = {
     default: {
       x: cursorX - 16,
@@ -115,8 +126,21 @@ const WorkPageScreen: React.FC<WorkPageProps> = () => {
           damping: 28,
         }}
       ></motion.div>
+      <motion.p
+        className="custom-cursor-text"
+        variants={textVariants}
+        animate={textVariant}
+        transition={{
+          type: "tween",
+          stiffness: 500,
+          damping: 28,
+        }}
+      >
+        <div className="inside"></div>
+      </motion.p>
+
       <div className="content">
-        <h1 className="dahlia-span">
+        <h1 className="dahlia-span" data-scroll data-scroll-speed="0.6">
           <span className="head-span1">Embark on a</span>
         </h1>
         <h1 className="dahlia-span">
