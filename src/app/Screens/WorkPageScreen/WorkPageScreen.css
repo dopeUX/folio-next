@@ -3,6 +3,7 @@
   height: -moz-fit-content;
   height: fit-content;
   overflow-x: hidden;
+  cursor: none;
 }
 .work-page .content {
   width: 100%;

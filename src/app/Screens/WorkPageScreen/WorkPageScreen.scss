@@ -2,6 +2,7 @@
    width: 100%;
    height: fit-content;
    overflow-x: hidden;
+   cursor: none;
 
    .content {
       width: 100%;
@@ -22,7 +23,7 @@
             transform: translateY(-300px);
          }
       }
-
+      // color:#d9d9d99c;
       .projects {
          width: 100%;
          margin-top: 5rem;
