@@ -9,6 +9,7 @@ import LocomotiveScroll from "locomotive-scroll";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+
 export interface WorkPageProps {
   children?: React.ReactNode;
 }
@@ -30,6 +31,14 @@ const WorkPageScreen: React.FC<WorkPageProps> = () => {
       duration: 1.6,
       ease: "expo.inOut",
     });
+
+    gsap.to(".first-child", {
+      marginLeft: "1rem",
+      delay: 0.5,
+      duration: 2.5,
+      stagger: 0.1,
+      ease: "expo.inOut",
+    });
   }, []);
 
   useEffect(() => {
@@ -39,6 +48,7 @@ const WorkPageScreen: React.FC<WorkPageProps> = () => {
       getDirection: true,
       direction: "horizontal",
     });
+    lscroll.start();
   }, []);
 
   return (
@@ -67,7 +77,7 @@ const WorkPageScreen: React.FC<WorkPageProps> = () => {
             >
               {workData.map((item, index) => {
                 return (
-                  <li key={item.id}>
+                  <li className={`first-child`} key={item.id}>
                     <ProjectItem
                       id={item.id}
                       onHover={() => {

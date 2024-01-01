@@ -9,12 +9,12 @@ export default function useHorizontalScroll() {
       const onWheel = e => {
         if (e.deltaY == 0) return;
         e.preventDefault();
-        
-        gsap.to(el, {
-          scrollTo: {x:el.scrollLeft + e.deltaY},
-          ease:"expo.inOut",
-          duration: 0.3
-        })
+        console.log(el.scrollLeft, e.deltaY, 'sssss')
+            gsap.to(el, {
+              scrollTo: {x:el.scrollLeft + e.deltaY, y: e.deltaY},
+              ease:"power4.out",
+              duration: 1.2
+            })
         // el.scrollTo({
         //   left: el.scrollLeft + e.deltaY,
         //   behavior: "smooth"

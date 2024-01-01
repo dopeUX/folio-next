@@ -36,5 +36,8 @@
   list-style-type: none;
 }
 .work-page .content .projects .projects-list:nth-child(1) > li {
-  margin-left: 1rem;
+  margin-left: 100%;
+}
+.work-page .content .projects .projects-list:last-child {
+  margin-right: 10rem;
 }/*# sourceMappingURL=WorkPageScreen.css.map */

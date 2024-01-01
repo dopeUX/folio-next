@@ -26,6 +26,7 @@
     "react-locomotive-scroll": "^0.2.2",
     "react-player": "^2.13.0",
     "react-redux": "^9.0.4",
+    "sass": "^1.69.6",
     "split-type": "^0.3.4",
     "three": "^0.159.0"
   },

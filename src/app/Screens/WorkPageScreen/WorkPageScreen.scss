@@ -35,7 +35,15 @@
             list-style-type: none;
             
             &:nth-child(1) > li {
-               margin-left: 1rem;
+               margin-left: 100%;
+            }
+
+            &:last-child{
+               margin-right: 10rem;
+            }
+
+            .first-child {
+               // margin-left:5rem;
             }
          }
       }
