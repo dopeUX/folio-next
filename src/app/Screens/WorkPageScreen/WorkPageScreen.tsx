@@ -10,6 +10,7 @@ import { ReactLenis } from "@studio-freight/react-lenis";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export interface WorkPageProps {
   children?: React.ReactNode;
@@ -17,6 +18,7 @@ export interface WorkPageProps {
 
 const WorkPageScreen: React.FC<WorkPageProps> = () => {
   const horizontalScrollDiv: any = useHorizontalScroll();
+  const insideRef: any = useRef(null);
   const [cursorVariant, setCursorVariant] = useState("default");
   const [cursorX, setCursorX] = useState(0);
   const [cursorY, setCursorY] = useState(0);
@@ -46,9 +48,9 @@ const WorkPageScreen: React.FC<WorkPageProps> = () => {
       x: cursorX - 75,
       y: cursorY - 75,
       borderRadius: 0,
-      backgroundColor: "#d9d9d9",
-      // backdropFilter: "blur(10px)",
-      mixBlendMode: "difference",
+      backgroundColor: "#d9d9d97e",
+      backdropFilter: "blur(10px)",
+      // mixBlendMode: "difference",
     },
     text: {
       width: 200,
@@ -115,7 +117,7 @@ const WorkPageScreen: React.FC<WorkPageProps> = () => {
     setCursorVariant("project");
   };
   return (
-    <div className="work-page" data-scroll-container>
+    <div className="work-page">
       <motion.div
         className="custom-cursor"
         variants={variants}
@@ -125,22 +127,18 @@ const WorkPageScreen: React.FC<WorkPageProps> = () => {
           stiffness: 500,
           damping: 28,
         }}
-      ></motion.div>
-      <motion.p
-        className="custom-cursor-text"
-        variants={textVariants}
-        animate={textVariant}
-        transition={{
-          type: "tween",
-          stiffness: 500,
-          damping: 28,
-        }}
       >
-        <div className="inside"></div>
-      </motion.p>
+      <div ref={insideRef} className="inside">
+        <h4>Some of my naive collection.</h4>
+        <div className="stack">
+          <Image src="/assets/react-logo.svg" className="img-stack" width={50} height={50} alt=""/>
+          <Image src="/assets/redux-logo.svg" className="img-stack" width={50} height={50} alt=""/>
+        </div>
+      </div>
+      </motion.div>
 
       <div className="content">
-        <h1 className="dahlia-span" data-scroll data-scroll-speed="0.6">
+        <h1 className="dahlia-span">
           <span className="head-span1">Embark on a</span>
         </h1>
         <h1 className="dahlia-span">
@@ -177,7 +175,8 @@ const WorkPageScreen: React.FC<WorkPageProps> = () => {
                           ease: "expo.inOut",
                           duration: 0.5,
                         });
-                        setCursorVariant("text");
+                        insideRef.current.style.opacity = 1
+                        setCursorVariant("project");
                       }}
                       onLeave={() => {
                         gsap.to(`.wrapper${item.id}`, {
@@ -190,6 +189,7 @@ const WorkPageScreen: React.FC<WorkPageProps> = () => {
                           ease: "expo.inOut",
                           duration: 0.5,
                         });
+                        insideRef.current.style.opacity = 0;
                         setCursorVariant("default");
                       }}
                     />

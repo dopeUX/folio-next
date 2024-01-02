@@ -3,7 +3,7 @@
    height: fit-content;
    overflow-x: hidden;
    cursor: none;
-
+   // color:#d9d9d97e;
    .content {
       width: 100%;
       display: grid;
@@ -49,4 +49,22 @@
          }
       }
    }
+}
+
+.inside {
+  padding: 1rem;
+  opacity: 0;
+  h4 {
+   width: fit-content;
+   font-size: .9rem;
+   word-wrap: break-word;
+   margin-right: 4rem;
+  }
+  .stack {
+   display: flex;
+  }
+  .img-stack {
+    width: 40px;
+    height: 40px;
+  }
 }

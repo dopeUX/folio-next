@@ -41,4 +41,22 @@
 }
 .work-page .content .projects .projects-list:last-child {
   margin-right: 10rem;
+}
+.inside {
+  padding: 1rem;
+  opacity: 0;
+}
+.inside h4 {
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 0.9rem;
+  word-wrap: break-word;
+  margin-right: 4rem;
+}
+.inside .stack {
+  display: flex;
+}
+.inside .img-stack {
+  width: 40px;
+  height: 40px;
 }/*# sourceMappingURL=WorkPageScreen.css.map */
