@@ -128,13 +128,25 @@ const WorkPageScreen: React.FC<WorkPageProps> = () => {
           damping: 28,
         }}
       >
-      <div ref={insideRef} className="inside">
-        <h4>Some of my naive collection.</h4>
-        <div className="stack">
-          <Image src="/assets/react-logo.svg" className="img-stack" width={50} height={50} alt=""/>
-          <Image src="/assets/redux-logo.svg" className="img-stack" width={50} height={50} alt=""/>
-        </div>
-      </div>
+        {/* <div ref={insideRef} className="inside">
+          <h4>Some of my naive collection.</h4>
+          <div className="stack">
+            <Image
+              src="/assets/react-logo.svg"
+              className="img-stack"
+              width={50}
+              height={50}
+              alt=""
+            />
+            <Image
+              src="/assets/redux-logo.svg"
+              className="img-stack"
+              width={50}
+              height={50}
+              alt=""
+            />
+          </div>
+        </div> */}
       </motion.div>
 
       <div className="content">
@@ -175,8 +187,8 @@ const WorkPageScreen: React.FC<WorkPageProps> = () => {
                           ease: "expo.inOut",
                           duration: 0.5,
                         });
-                        insideRef.current.style.opacity = 1
-                        setCursorVariant("project");
+                        // insideRef.current.style.opacity = 1;
+                        setCursorVariant("text");
                       }}
                       onLeave={() => {
                         gsap.to(`.wrapper${item.id}`, {
@@ -189,7 +201,7 @@ const WorkPageScreen: React.FC<WorkPageProps> = () => {
                           ease: "expo.inOut",
                           duration: 0.5,
                         });
-                        insideRef.current.style.opacity = 0;
+                        // insideRef.current.style.opacity = 0;
                         setCursorVariant("default");
                       }}
                     />

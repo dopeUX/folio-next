@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import OverlapLoadingLayout from "../Layouts/OverlapLoadingLayout/OverlapLoadingLayout";
 import NavigationLayoutWhite from "../Layouts/NavigationLayoutWhite/NavigationLayoutWhite";
+import ProjectDetailScreen from "../Layouts/ProjectDetailScreen/ProjectDetailScreen";
 
 const Work: React.FC<any> = () => {
   const showNav = useSelector((state: RootState) => {
@@ -25,6 +26,7 @@ const Work: React.FC<any> = () => {
       {/* <DesktopHeader /> */}
       {overlapLoading && <OverlapLoadingLayout />}
       {showNav && <NavigationLayoutWhite />}
+      {<ProjectDetailScreen />}
       <WorkPageScreen />
     </>
   );
